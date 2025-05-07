@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766151460180949729}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.060742855, y: -0.56999993, z: 0.031263098}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.060742848, y: -0.043, z: 0.031263098}
   m_LocalScale: {x: 0.4, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,8 +132,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3599720881638251452}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: -0.408, y: -0.125, z: 0.031263098}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.408, y: -0.488, z: 0.031263098}
   m_LocalScale: {x: 0.5, y: 0.4, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,9 +238,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7398988435869603980}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.5020001, y: -0.11899996, z: 0.031263098}
-  m_LocalScale: {x: 0.40000007, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.502, y: -0.494, z: 0.031263098}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4532608987128730348}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 5034077613169127133}
   - component: {fileID: 1943077640837443144}
   m_Layer: 0
-  m_Name: U 2x2
+  m_Name: n 2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,14 +366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c831029ea629e47a54d0f61bc1a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referencePointStick: {fileID: 6007352310402315177}
-  isReferenceVertical: 0
+  referencePointStick: {fileID: 5516958766498306928}
+  isReferenceVertical: 1
   gridRows:
   - sticks:
-    - {fileID: 6420173582256518250}
-  - sticks:
-    - {fileID: 6007352310402315177}
     - {fileID: 5516958766498306928}
+    - {fileID: 6007352310402315177}
+  - sticks:
+    - {fileID: 6420173582256518250}
 --- !u!61 &1943077640837443144
 BoxCollider2D:
   m_ObjectHideFlags: 0

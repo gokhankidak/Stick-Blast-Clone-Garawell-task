@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 public class GridController : MonoBehaviour
 {
     [SerializeField] private SticksRow[] gridRowSticks;
-    [SerializeField] private Color highlightColor, occupiedColor, emptyColor;
     [SerializeField] private GamePlaySO gamePlaySO;
     [SerializeField] private float snapDistance = 0.25f;
 
