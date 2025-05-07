@@ -7,7 +7,6 @@ public class Stick : MonoBehaviour
     [HideInInspector] public bool isOccupied;
     [SerializeField] List<GameObject> adjacentBlocks;
     [SerializeField] private Color occupiedColor, emptyColor, highlightColor;
-    [SerializeField] private GameObject highlightEffect;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -30,13 +29,11 @@ public class Stick : MonoBehaviour
     public void OnHighlighted()
     {
         spriteRenderer.color = highlightColor;
-        highlightEffect.SetActive(true);
     }
     
     public void OnRemoved()
     {
         spriteRenderer.color = emptyColor;
-        highlightEffect.SetActive(false);
         isOccupied = false;
     }
 }

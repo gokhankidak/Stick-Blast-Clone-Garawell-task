@@ -141,8 +141,8 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < selectedPiece.gridRows[i].sticks.Count; j++)
             {
-                Debug.Log("gridRowSticks[i].stick.count + " + gridRowSticks[index.x].sticks.Count);
-                if (index.x + i >= gridRowSticks.Length || index.y + j >= gridRowSticks[index.x].sticks.Count)
+//                Debug.Log("gridRowSticks[i].stick.count + " gridRowSticks[index.x].sticks.Count);
+                if (index.x + i >= gridRowSticks.Length || index.y + j >= gridRowSticks[index.x + i].sticks.Count)
                     return false;
                 if (gridRowSticks[index.x + i].sticks[index.y + j].isOccupied && selectedPiece.gridRows[i].sticks[j] != null)
                     return false;

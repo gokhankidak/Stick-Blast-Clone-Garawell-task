@@ -28,6 +28,7 @@ public class SquareController : MonoBehaviour
 
     private async void CheckForMatch()
     {
+        await Task.Delay(300);
         var scoredRow = new List<Square>();
         var scoredColumn = new List<Square>();
         for (int i = 0; i < squares.Count; i++)

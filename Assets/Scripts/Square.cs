@@ -11,6 +11,7 @@ public class Square : MonoBehaviour
     [SerializeField] private Ease easeType;
     [SerializeField] private float duration;
     [SerializeField] private GamePlaySO gamePlaySo;
+    [SerializeField] private ParticleSystem particleSystem;
 
     SquareController squareController;
     
@@ -49,9 +50,9 @@ public class Square : MonoBehaviour
         isActive = false;
     }
 
-    public async void OnScored()
+    public void OnScored()
     {
-        await Task.Delay(400);
+        particleSystem.Play();
         transform.DOScale(Vector3.zero, duration).SetEase(easeType);
         SetInactive();
         foreach (var stick in surroundingSticks)
