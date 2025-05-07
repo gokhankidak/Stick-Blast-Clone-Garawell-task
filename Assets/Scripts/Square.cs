@@ -50,15 +50,16 @@ public class Square : MonoBehaviour
         isActive = false;
     }
 
+    public List<Stick> GetSurroundingSticks()
+    {
+        return surroundingSticks;
+    }
+    
     public void OnScored()
     {
         particleSystem.Play();
         transform.DOScale(Vector3.zero, duration).SetEase(easeType);
         SetInactive();
-        foreach (var stick in surroundingSticks)
-        {
-            stick.OnScored();
-        }
     }
 
     public void SetActive()

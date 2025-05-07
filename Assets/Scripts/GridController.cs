@@ -23,11 +23,11 @@ public class GridController : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < gridRowSticks. Length; i++)
+        for (int i = 0; i < gridRowSticks.Length; i++)
         {
             for (int j = 0; j < gridRowSticks[i].sticks.Count; j++)
             {
-                gridRowSticks[i].sticks[j] .OnRemoved();
+                gridRowSticks[i].sticks[j].RemoveHighlight();
             }
         }
 
@@ -47,8 +47,19 @@ public class GridController : MonoBehaviour
                 }
                 else
                 {
-                    stick.OnRemoved();
+                    stick.RemoveHighlight();
                 }
+            }
+        }
+    }
+
+    private void RemoveAllHighlights()
+    {
+        for (int i = 0; i < gridRowSticks.Length; i++)
+        {
+            for (int j = 0; j < gridRowSticks[i].sticks.Count; j++)
+            {
+                gridRowSticks[i].sticks[j].RemoveHighlight();
             }
         }
     }
@@ -95,13 +106,14 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < gridRowSticks[i].sticks.Count; j++)
             {
-                if((selectedPiece.isReferenceVertical && i%2 == 0) || (!selectedPiece.isReferenceVertical && i%2 == 1)) continue;
-                
+                if ((selectedPiece.isReferenceVertical && i % 2 == 0) ||
+                    (!selectedPiece.isReferenceVertical && i % 2 == 1)) continue;
+
                 Stick stick = gridRowSticks[i].sticks[j];
                 var distance = Vector3.Distance(stick.transform.position, referencePoint.position);
-                
+
                 if (distance > snapDistance) continue;
-                ReDrawGrid();
+                RemoveAllHighlights();
                 if (CanSnap(new Vector2Int(i, j)))
                 {
                     if (closestDistance > distance)
@@ -117,7 +129,7 @@ public class GridController : MonoBehaviour
         if (closestIndex.x == -1 || closestIndex.y == -1)
         {
             snapIndex = new Vector2Int(-1, -1);
-            ReDrawGrid();
+            RemoveAllHighlights();
             return;
         }
 
@@ -130,7 +142,7 @@ public class GridController : MonoBehaviour
         {
             for (int y = 0; y < selectedPiece.gridRows[x].sticks.Count; y++)
             {
-                gridRowSticks[i + x].sticks[j + y].OnHighlighted();
+                gridRowSticks[i + x].sticks[j + y].Highlight();
             }
         }
     }
@@ -144,10 +156,12 @@ public class GridController : MonoBehaviour
 //                Debug.Log("gridRowSticks[i].stick.count + " gridRowSticks[index.x].sticks.Count);
                 if (index.x + i >= gridRowSticks.Length || index.y + j >= gridRowSticks[index.x + i].sticks.Count)
                     return false;
-                if (gridRowSticks[index.x + i].sticks[index.y + j].isOccupied && selectedPiece.gridRows[i].sticks[j] != null)
+                if (gridRowSticks[index.x + i].sticks[index.y + j].isOccupied &&
+                    selectedPiece.gridRows[i].sticks[j] != null)
                     return false;
             }
         }
+
         return true;
     }
 

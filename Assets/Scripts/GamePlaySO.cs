@@ -9,4 +9,5 @@ public class GamePlaySO : ScriptableObject
     public Action OnPieceSelected;
     public Action OnPieceDroped;
     public Action OnPiecePlaced;
+    public Action OnScored;
 }

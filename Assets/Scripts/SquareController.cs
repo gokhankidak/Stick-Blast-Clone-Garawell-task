@@ -68,12 +68,19 @@ public class SquareController : MonoBehaviour
         }
 
         if(scoredSquares.Count == 0) return;
-        
+        var surroundingSticks = new HashSet<Stick>();
         foreach (var scoredSquare in scoredSquares)
         { 
             await Task.Delay(100);
             scoredSquare.OnScored();
+            surroundingSticks.AddRange(scoredSquare.GetSurroundingSticks());
         }
+        
+        foreach (var surroundingStick in surroundingSticks)
+        {
+            surroundingStick.OnScored();
+        }
+        
         scoredSquares.Clear();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stick : MonoBehaviour
 {
     [HideInInspector] public bool isOccupied;
-    [SerializeField] List<GameObject> adjacentBlocks;
+    [SerializeField] List<Block> adjacentBlocks;
     [SerializeField] private Color occupiedColor, emptyColor, highlightColor;
     private SpriteRenderer spriteRenderer;
 
@@ -17,23 +17,38 @@ public class Stick : MonoBehaviour
     public void OnOccupied()
     {
         spriteRenderer.color = occupiedColor;
+        foreach (var block in adjacentBlocks)
+        {
+            block.OnOccupied();
+        }
         isOccupied = true;
     }
     
     public void OnScored()
     {
         spriteRenderer.color = emptyColor;
+        foreach (var block in adjacentBlocks)
+        {
+            block.OnRemoved();
+        }
         isOccupied = false;
     }
 
-    public void OnHighlighted()
+    public void Highlight()
     {
         spriteRenderer.color = highlightColor;
+        foreach (var block in adjacentBlocks)
+        {
+            block.Highlight();
+        }
     }
     
-    public void OnRemoved()
+    public void RemoveHighlight()
     {
-        spriteRenderer.color = emptyColor;
-        isOccupied = false;
+        spriteRenderer.color = isOccupied? occupiedColor : emptyColor;
+        foreach (var block in adjacentBlocks)
+        {
+            block.RemoveHighlight();
+        }
     }
 }
