@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,7 +21,7 @@ public class GridController : MonoBehaviour
     {
         ServiceLocator.Register(this);
     }
-    
+
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class GridController : MonoBehaviour
                 gridOccupied[i, j] = false;
             }
         }
+
         ReDrawGrid();
     }
 
@@ -55,8 +57,8 @@ public class GridController : MonoBehaviour
 
     private void PlacePiece()
     {
-        if(snapIndex.x == -1 || snapIndex.y == -1) return;
-        
+        if (snapIndex.x == -1 || snapIndex.y == -1) return;
+
         for (int x = 0; x < selectedPiece.gridRows.Count; x++)
         {
             for (int y = 0; y < selectedPiece.gridRows[x].sticks.Count; y++)
@@ -65,9 +67,10 @@ public class GridController : MonoBehaviour
                 gridRowSticks[snapIndex.x + x].sticks[snapIndex.y + y].SetColor(occupiedColor);
             }
         }
+
         selectedPiece.DestroyPiece();
     }
-    
+
     private void OnEnable()
     {
         gamePlaySO.OnPieceSelected += OnStickSelected;
@@ -90,19 +93,20 @@ public class GridController : MonoBehaviour
     {
         Vector2Int closestIndex = new Vector2Int(-1, -1);
         float closestDistance = Mathf.Infinity;
-        var startIndex = selectedPiece.isReferenceVertical ? 1 : 0;
-        for (int i = startIndex; i < gridRowSticks.Length; i += 2)
+        for (int i = 0; i < gridRowSticks.Length; i++)
         {
             for (int j = 0; j < gridRowSticks[i].sticks.Count; j++)
             {
+                if((selectedPiece.isReferenceVertical && i%2 == 0) || (!selectedPiece.isReferenceVertical && i%2 == 1)) continue;
+                
                 Stick stick = gridRowSticks[i].sticks[j];
                 var distance = Vector3.Distance(stick.transform.position, referencePoint.position);
-
+                
                 if (distance > snapDistance) continue;
                 ReDrawGrid();
                 if (CanSnap(new Vector2Int(i, j)))
                 {
-                    if(closestDistance > distance) 
+                    if (closestDistance > distance)
                     {
                         closestDistance = distance;
                         closestIndex = new Vector2Int(i, j);
@@ -111,14 +115,17 @@ public class GridController : MonoBehaviour
                 }
             }
         }
+
         if (closestIndex.x == -1 || closestIndex.y == -1)
         {
             snapIndex = new Vector2Int(-1, -1);
             ReDrawGrid();
             return;
         }
+
         HighlightSnap(closestIndex.x, closestIndex.y);
     }
+
     private void HighlightSnap(int i, int j)
     {
         for (int x = 0; x < selectedPiece.gridRows.Count; x++)
@@ -136,17 +143,13 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < selectedPiece.gridRows[i].sticks.Count; j++)
             {
-                if (index.x + i >= gridOccupied.GetLength(0) || index.y + j >= gridOccupied.GetLength(1)
-                                                             || index.x + selectedPiece.maxIndex.x >
-                                                             gridRowSticks.Length || j + index.y >
-                                                             gridRowSticks[selectedPiece.maxIndex.x + i].sticks.Count)
+                Debug.Log("gridRowSticks[i].stick.count + " + gridRowSticks[index.x].sticks.Count);
+                if (index.x + i >= gridRowSticks.Length || index.y + j >= gridRowSticks[index.x].sticks.Count)
                     return false;
                 if (gridOccupied[index.x + i, index.y + j] && selectedPiece.gridRows[i].sticks[j] != null)
                     return false;
             }
         }
-
-        Debug.Log("CanSnap");
         return true;
     }
 

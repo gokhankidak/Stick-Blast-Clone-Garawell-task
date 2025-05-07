@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755231752199584277}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.3, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7484897768839327855}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &2856350116625050303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 302760299194067455}
   - component: {fileID: 3793305127236610087}
   m_Layer: 0
-  m_Name: I 2x1
+  m_Name: I 4x1 V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,8 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePointStick: {fileID: 6749545773416474798}
-  isReferenceVertical: 0
+  isReferenceVertical: 1
   gridRows:
+  - sticks:
+    - {fileID: 6749545773416474798}
+  - sticks: []
   - sticks:
     - {fileID: 6749545773416474798}
 --- !u!61 &3793305127236610087
@@ -196,5 +199,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0

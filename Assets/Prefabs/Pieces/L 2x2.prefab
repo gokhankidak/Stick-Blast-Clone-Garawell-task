@@ -253,9 +253,10 @@ MonoBehaviour:
   isReferenceVertical: 0
   gridRows:
   - sticks:
-    - {fileID: 0}
+    - {fileID: 6685179428936925561}
   - sticks:
     - {fileID: 659560025649470236}
+  maxIndex: {x: 0, y: 0}
 --- !u!61 &1172293109683914219
 BoxCollider2D:
   m_ObjectHideFlags: 0

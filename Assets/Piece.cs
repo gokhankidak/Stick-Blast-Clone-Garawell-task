@@ -7,7 +7,6 @@ public class Piece : MonoBehaviour
     public Stick referencePointStick;
     public bool isReferenceVertical;
     public List<SticksRow> gridRows;
-    [HideInInspector] public Vector2Int maxIndex = Vector2Int.zero;
     
     private Vector3 originalScale;
     private Vector3 downScale;
@@ -19,23 +18,13 @@ public class Piece : MonoBehaviour
     private void Start()
     {
         pieceController = ServiceLocator.Get<PieceController>();
-        CalculateMaxIndexes();
         
         startPosition = transform.position;
         originalScale = transform.localScale;
         downScale = originalScale * 0.7f;
         transform.localScale = downScale;
     }
-
-    private void CalculateMaxIndexes()
-    {
-        maxIndex.x = gridRows.Count;
-        for (int i = 0; i < gridRows.Count; i++)
-        {
-            if(maxIndex.y < gridRows[i].sticks.Count)
-                maxIndex.y = gridRows[i].sticks.Count;
-        }
-    }
+    
 
     private void OnMouseEnter()
     {
@@ -62,6 +51,7 @@ public class Piece : MonoBehaviour
 
     public void DestroyPiece()
     {
+        pieceController.OnPieceDestroyed(this);
         Destroy(gameObject);
     }
 
