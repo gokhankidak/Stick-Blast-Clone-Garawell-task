@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1766151460180949729}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.37100005, y: -0.37474275, z: 0.031263098}
+  m_LocalPosition: {x: -0.4790001, y: 0.00025725365, z: 0}
   m_LocalScale: {x: 0.40000004, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,7 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f84fe8bd31b7a4ea0d3cb233cc4792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
   adjacentBlocks: []
+  occupiedColor: {r: 0, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3599720881638251452
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 3599720881638251452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.07399988, y: 0.0940001, z: 0.031263098}
+  m_LocalPosition: {x: -0.03400016, y: 0.4690001, z: 0}
   m_LocalScale: {x: 0.5, y: 0.40000004, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,7 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f84fe8bd31b7a4ea0d3cb233cc4792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
   adjacentBlocks: []
+  occupiedColor: {r: 0, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7398988435869603980
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 7398988435869603980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08000004, y: -0.816, z: 0.031263098}
+  m_LocalPosition: {x: -0.028, y: -0.441, z: 0}
   m_LocalScale: {x: 0.40000015, y: 0.5000001, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -302,7 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f84fe8bd31b7a4ea0d3cb233cc4792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
   adjacentBlocks: []
+  occupiedColor: {r: 0, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8541814639416728656
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +372,6 @@ MonoBehaviour:
     - {fileID: 6420173582256518250}
   - sticks:
     - {fileID: 6007352310402315177}
-  maxIndex: {x: 0, y: 0}
 --- !u!61 &1943077640837443144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,7 +406,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.027530551, y: -0.42475927}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -405,5 +416,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6843345, y: 1.8495185}
+  m_Size: {x: 1.5221591, y: 1.5}
   m_EdgeRadius: 0

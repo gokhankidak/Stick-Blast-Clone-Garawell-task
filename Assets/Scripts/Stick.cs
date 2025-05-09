@@ -19,7 +19,7 @@ public class Stick : MonoBehaviour
         spriteRenderer.color = occupiedColor;
         foreach (var block in adjacentBlocks)
         {
-            block.OnOccupied();
+            block.Occupy();
         }
         isOccupied = true;
     }
@@ -29,7 +29,7 @@ public class Stick : MonoBehaviour
         spriteRenderer.color = emptyColor;
         foreach (var block in adjacentBlocks)
         {
-            block.OnRemoved();
+            block.Clear();
         }
         isOccupied = false;
     }
@@ -40,6 +40,16 @@ public class Stick : MonoBehaviour
         foreach (var block in adjacentBlocks)
         {
             block.Highlight();
+        }
+    }
+
+    public void Clear()
+    {
+        isOccupied = false;
+        spriteRenderer.color = emptyColor;
+        foreach (var block in adjacentBlocks)
+        {
+            block.Clear();
         }
     }
     

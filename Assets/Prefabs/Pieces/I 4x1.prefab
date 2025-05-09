@@ -100,7 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f84fe8bd31b7a4ea0d3cb233cc4792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
   adjacentBlocks: []
+  occupiedColor: {r: 0, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8117998436918085698
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +157,6 @@ MonoBehaviour:
   - sticks:
     - {fileID: 6749545773416474798}
     - {fileID: 6749545773416474798}
-  maxIndex: {x: 0, y: 0}
 --- !u!61 &3793305127236610087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,5 +201,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.9480135, y: 1}
   m_EdgeRadius: 0

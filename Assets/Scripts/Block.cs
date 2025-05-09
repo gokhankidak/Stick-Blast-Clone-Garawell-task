@@ -7,13 +7,13 @@ public class Block : MonoBehaviour
 
     private int occupiedCount = 0;
 
-    public void OnOccupied()
+    public void Occupy()
     {
         spriteRenderer.color = occupiedColor;
         occupiedCount++;
     }
 
-    public void OnRemoved()
+    public void Clear()
     {
         occupiedCount--;
         spriteRenderer.color = occupiedCount <= 0 ? emptyColor : occupiedColor;

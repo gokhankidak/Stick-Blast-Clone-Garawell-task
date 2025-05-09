@@ -25,6 +25,7 @@ public class SquareController : MonoBehaviour
     {
         ServiceLocator.Register(this);
     }
+    
 
     private async void CheckForMatch()
     {

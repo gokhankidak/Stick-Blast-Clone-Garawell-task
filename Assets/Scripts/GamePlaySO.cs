@@ -10,4 +10,7 @@ public class GamePlaySO : ScriptableObject
     public Action OnPieceDroped;
     public Action OnPiecePlaced;
     public Action OnScored;
+    public Action OnNewLevel;
+    public Action OnGameOver;
+    public Action OnRestart;
 }
