@@ -102,6 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   adjacentBlocks: []
-  occupiedColor: {r: 0, g: 0.003921569, b: 0.62352943, a: 1}
+  occupiedColor: {r: 0, g: 0.6845894, b: 1, a: 1}
   emptyColor: {r: 0, g: 0.16862746, b: 0.7490196, a: 1}
-  highlightColor: {r: 0, g: 0.4666667, b: 0.9450981, a: 1}
+  highlightColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.54509807}

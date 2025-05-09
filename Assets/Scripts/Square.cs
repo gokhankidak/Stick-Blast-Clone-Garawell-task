@@ -50,6 +50,12 @@ public class Square : MonoBehaviour
         isActive = false;
     }
 
+    public void ClearSquare()
+    {
+        isActive = false;
+        transform.localScale = Vector3.zero;
+    }
+
     public List<Stick> GetSurroundingSticks()
     {
         return surroundingSticks;

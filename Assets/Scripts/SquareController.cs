@@ -14,19 +14,31 @@ public class SquareController : MonoBehaviour
     private void OnEnable()
     {
         gamePlaySO.OnPiecePlaced += CheckForMatch;
+        gamePlaySO.OnNewLevel += ClearSquares;
     }
     
     private void OnDisable()
     {
         gamePlaySO.OnPiecePlaced -= CheckForMatch;
+        gamePlaySO.OnNewLevel -= ClearSquares;
     }
 
     private void Awake()
     {
         ServiceLocator.Register(this);
     }
-    
 
+    private void ClearSquares()
+    {
+        foreach (var square in squares)
+        {
+            for (int i = 0; i < square.squares.Length; i++)
+            {
+                square.squares[i].ClearSquare();
+            }
+        }
+    }
+    
     private async void CheckForMatch()
     {
         await Task.Delay(300);

@@ -74,7 +74,7 @@ public class PieceController : MonoBehaviour
     
     private async void CheckForFail()
     {
-        await Task.Delay(500);
+        await Task.Delay(800);
         var canPlace = false;
         foreach (var piece in spawnedPieces)
         {

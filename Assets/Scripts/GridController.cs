@@ -112,7 +112,7 @@ public class GridController : MonoBehaviour
     private void OnStickSelected()
     {
         selectedPiece = gamePlaySO.selectedPiece;
-        referencePoint = selectedPiece.transform;
+        referencePoint = selectedPiece.referencePointStick.transform;
     }
 
     private void CheckForSnap()
