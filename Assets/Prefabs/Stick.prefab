@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8080756286654808283}
   - component: {fileID: 2214848080636760230}
   - component: {fileID: -9204239192732887672}
+  - component: {fileID: 768185552276440781}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0001542530eec0b48acd0e7abe2bdecf, type: 3}
   m_Color: {r: 0, g: 0.17812836, b: 0.7924528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  adjacentBlocks: []
+  isScoreHighlighted: 0
+  adjacentBlocks:
+  - {fileID: 0}
+  - {fileID: 0}
   occupiedColor: {r: 0, g: 0.6845894, b: 1, a: 1}
   emptyColor: {r: 0, g: 0.16862746, b: 0.7490196, a: 1}
   highlightColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.54509807}
+--- !u!114 &768185552276440781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7859812658252505946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0, g: 0.54901963, b: 0.8000001, a: 1}
+  glowBrightness: 1.5
+  outlineWidth: 10
+  alphaThreshold: 0.171
+  drawOutside: 0
+  enableInstancing: 0

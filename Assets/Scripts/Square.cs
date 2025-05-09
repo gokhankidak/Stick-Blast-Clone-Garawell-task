@@ -40,6 +40,29 @@ public class Square : MonoBehaviour
         }
         SetActive();
     }
+    
+    public bool CheckForHighlight()
+    {
+        bool hasAtLeastOneNotOccupied = false;
+        if (isActive) return true;
+        foreach (var stick in surroundingSticks)
+        {
+            if (!stick.isOccupied) hasAtLeastOneNotOccupied = true;
+            
+            if (!stick.isScoreHighlighted && !stick.isOccupied)
+            {
+                return false;
+            }
+        }
+        if (!hasAtLeastOneNotOccupied) return false;
+        
+        foreach (var stick in surroundingSticks)
+        {
+            stick.ScoreHighlight(true);
+        }
+        
+        return true;
+    }
 
     private void Start()
     {

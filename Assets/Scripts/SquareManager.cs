@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class SquareManager : MonoBehaviour
     private void OnEnable()
     {
         gamePlaySO.OnPiecePlaced += CheckForMatch;
+        
     }
     
     private void OnDisable()
@@ -21,9 +23,32 @@ public class SquareManager : MonoBehaviour
         gamePlaySO.OnPiecePlaced -= CheckForMatch;
     }
 
+    private void Start()
+    {
+        StartCoroutine(CustomUpdate());
+    }
+
     private void Awake()
     {
         ServiceLocator.Register(this);
+    }
+
+    private IEnumerator CustomUpdate()
+    {
+        float tickTime = (float)1/gamePlaySO.customUpdateCount;
+        while (true)
+        {
+            yield return new WaitForSeconds(tickTime);
+
+            for (int j = 0; j < squares[0].squares.Length; j++)
+            {
+                for (int i = 0; i < squares.Count; i++)
+                {
+                    squares[i].squares[j].CheckForHighlight();
+                }
+            }
+
+        }
     }
     
     private async void CheckForMatch()

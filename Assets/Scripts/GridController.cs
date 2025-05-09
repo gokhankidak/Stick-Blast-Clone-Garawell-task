@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -45,8 +46,9 @@ public class GridController : MonoBehaviour
                 gridRowSticks[i].sticks[j].RemoveHighlight();
             }
         }
-
+        
         ReDrawGrid();
+        StartCoroutine(CustomUpdate());
     }
 
     private void RestartGame()
@@ -208,13 +210,20 @@ public class GridController : MonoBehaviour
     private void OnStickDroped()
     {
         PlacePiece();
+        ReDrawGrid();
         selectedPiece = null;
     }
 
-    private void Update()
+    private IEnumerator CustomUpdate()
     {
-        if (selectedPiece == null) return;
-        CheckForSnap();
+        float tickTime = (float)1/gamePlaySO.customUpdateCount;
+        while (true)
+        {
+            
+            yield return new WaitForSeconds(tickTime);
+            if (selectedPiece != null)
+                CheckForSnap();
+        }
     }
 }
 

@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class GamePlaySO : ScriptableObject
 {
     public int currentLevel = 0;
-    
+    public int customUpdateCount = 15;
     [HideInInspector] public Piece selectedPiece;
     public Action OnPieceSelected;
     public Action OnPieceDroped;

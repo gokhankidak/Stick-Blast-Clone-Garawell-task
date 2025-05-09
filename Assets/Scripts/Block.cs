@@ -1,4 +1,5 @@
 using System;
+using SpriteGlow;
 using UnityEngine;
 
 public class Block : MonoBehaviour
@@ -7,8 +8,13 @@ public class Block : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GamePlaySO gamePlaySO;
 
+    private SpriteGlowEffect spriteGlowEffect;
     private int occupiedCount = 0;
     
+    private void Awake()
+    {
+        spriteGlowEffect = GetComponent<SpriteGlowEffect>();
+    }
 
     public void ResetBlock()
     {
@@ -31,6 +37,12 @@ public class Block : MonoBehaviour
     public void RemoveHighlight()
     {
         spriteRenderer.color = occupiedCount > 0 ? occupiedColor : emptyColor;
+    }
+    
+    public void ScoreHighlight(bool isActive)
+
+    {
+        spriteGlowEffect.enabled = isActive;
     }
 
     public void Highlight()
