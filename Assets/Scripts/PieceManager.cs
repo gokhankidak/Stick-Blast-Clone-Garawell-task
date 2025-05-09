@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PieceController : MonoBehaviour
+public class PieceManager : MonoBehaviour
 {
     [SerializeField] private GamePlaySO gamePlaySO;
     [SerializeField] private List<Piece> pieces;
@@ -74,7 +74,7 @@ public class PieceController : MonoBehaviour
     
     private async void CheckForFail()
     {
-        await Task.Delay(800);
+        await Task.Delay(1000);
         var canPlace = false;
         foreach (var piece in spawnedPieces)
         {

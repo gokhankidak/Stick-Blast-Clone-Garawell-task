@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SquareController : MonoBehaviour
+public class SquareManager : MonoBehaviour
 {
     [SerializeField] private GridController gridController;
     [SerializeField] private List<SquareArray> squares = new List<SquareArray>();
@@ -14,29 +14,16 @@ public class SquareController : MonoBehaviour
     private void OnEnable()
     {
         gamePlaySO.OnPiecePlaced += CheckForMatch;
-        gamePlaySO.OnNewLevel += ClearSquares;
     }
     
     private void OnDisable()
     {
         gamePlaySO.OnPiecePlaced -= CheckForMatch;
-        gamePlaySO.OnNewLevel -= ClearSquares;
     }
 
     private void Awake()
     {
         ServiceLocator.Register(this);
-    }
-
-    private void ClearSquares()
-    {
-        foreach (var square in squares)
-        {
-            for (int i = 0; i < square.squares.Length; i++)
-            {
-                square.squares[i].ClearSquare();
-            }
-        }
     }
     
     private async void CheckForMatch()
@@ -82,9 +69,11 @@ public class SquareController : MonoBehaviour
 
         if(scoredSquares.Count == 0) return;
         var surroundingSticks = new HashSet<Stick>();
+        ScoreManager.Instance.ShowScoreNumber( Vector3.zero, 50);
         foreach (var scoredSquare in scoredSquares)
         { 
             await Task.Delay(100);
+            ScoreManager.Instance.ShowScoreNumber( scoredSquare.transform.position,50);
             scoredSquare.OnScored();
             surroundingSticks.AddRange(scoredSquare.GetSurroundingSticks());
         }

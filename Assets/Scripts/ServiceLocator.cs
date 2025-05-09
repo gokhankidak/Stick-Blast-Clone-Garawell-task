@@ -49,7 +49,7 @@ public static class ServiceLocator
         }
     }
 
-    // Clear all (optional)
+    // RemoveOccupy all (optional)
     public static void ClearAll()
     {
         services.Clear();

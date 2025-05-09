@@ -191,8 +191,7 @@ MonoBehaviour:
   m_text: 123
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
-  m_sharedMaterial: {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02,
-    type: 2}
+  m_sharedMaterial: {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -377,8 +376,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4433919491036265723}
   - {fileID: 1331583379896610593}
@@ -398,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 2.5
+  lifetime: 1.5
   unscaledTime: 0
   enable3DGame: 0
   faceCameraView: 1
@@ -416,7 +415,7 @@ MonoBehaviour:
   fovCamera: {fileID: 0}
   cameraOverride: {fileID: 0}
   enableNumber: 1
-  number: 123
+  number: 0
   numberSettings:
     bold: 0
     italic: 0
@@ -449,8 +448,8 @@ MonoBehaviour:
     suffixDecimals: 1
     suffixDecimalChar: .
     suffixHideZeros: 0
-  enableLeftText: 0
-  leftText: 
+  enableLeftText: 1
+  leftText: 'COMBO '
   leftTextSettings:
     bold: 0
     italic: 0

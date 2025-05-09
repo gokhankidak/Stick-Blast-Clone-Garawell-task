@@ -29,7 +29,7 @@ public class Stick : MonoBehaviour
         spriteRenderer.color = emptyColor;
         foreach (var block in adjacentBlocks)
         {
-            block.Clear();
+            block.RemoveOccupy();
         }
         isOccupied = false;
     }
@@ -48,8 +48,8 @@ public class Stick : MonoBehaviour
         isOccupied = false;
         spriteRenderer.color = emptyColor;
         foreach (var block in adjacentBlocks)
-        {
-            block.Clear();
+        { 
+            block.ResetBlock();
         }
     }
     

@@ -13,16 +13,19 @@ public class Square : MonoBehaviour
     [SerializeField] private GamePlaySO gamePlaySo;
     [SerializeField] private ParticleSystem particleSystem;
 
-    SquareController squareController;
+    SquareManager squareManager;
     
     private void OnEnable()
     {
         gamePlaySo.OnPiecePlaced += CheckForSquares;
+        gamePlaySo.OnRestart += ClearSquare;
+        
     }
     
     private void OnDisable()
     {
         gamePlaySo.OnPiecePlaced -= CheckForSquares;
+        gamePlaySo.OnRestart -= ClearSquare;
     }
     
     private void CheckForSquares()
@@ -42,7 +45,7 @@ public class Square : MonoBehaviour
     {
         SetInactive();
         transform.localScale = Vector3.zero;
-        squareController = ServiceLocator.Get<SquareController>();
+        squareManager = ServiceLocator.Get<SquareManager>();
     }
 
     public void SetInactive()
@@ -50,7 +53,7 @@ public class Square : MonoBehaviour
         isActive = false;
     }
 
-    public void ClearSquare()
+    private void ClearSquare()
     {
         isActive = false;
         transform.localScale = Vector3.zero;
@@ -72,6 +75,7 @@ public class Square : MonoBehaviour
     {
         isActive = true;
         transform.localScale = Vector3.zero;
+        ScoreManager.Instance.ShowScoreNumber( transform.position, 10,true);
         transform.DOScale(Vector3.one, duration).SetEase(easeType);
     }
 }

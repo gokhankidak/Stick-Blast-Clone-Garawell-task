@@ -8,11 +8,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ServiceLocator.Register(this);
+        gamePlaySO.currentLevel = 1;
     }
 
     public void RestartGame()
     {
         gamePlaySO.OnRestart?.Invoke();
+    }
+
+    public void NextLevel()
+    {
+        gamePlaySO.currentLevel++;
+        gamePlaySO.OnNewLevel?.Invoke();
     }
     
 }

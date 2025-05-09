@@ -15,7 +15,7 @@ public class GridController : MonoBehaviour
     private Transform referencePoint;
     private Vector2Int snapIndex;
     private bool isReferenceVertical;
-    private Vector3 pieceOffset = Vector3.up;
+    private Vector3 pieceOffset = Vector3.up * 1.5f;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class GridController : MonoBehaviour
         gamePlaySO.OnPieceDroped -= OnStickDroped;
         gamePlaySO.OnRestart -= RestartGame;
     }
-    
+
     private void Start()
     {
         for (int i = 0; i < gridRowSticks.Length; i++)
@@ -58,9 +58,10 @@ public class GridController : MonoBehaviour
                 gridRowSticks[i].sticks[j].Clear();
             }
         }
+
         ReDrawGrid();
     }
-    
+
     private void ReDrawGrid()
     {
         for (int i = 0; i < gridRowSticks.Length; i++)
@@ -99,7 +100,7 @@ public class GridController : MonoBehaviour
         {
             for (int y = 0; y < selectedPiece.gridRows[x].sticks.Count; y++)
             {
-                if(selectedPiece.gridRows[x].sticks[y] == null) continue;
+                if (selectedPiece.gridRows[x].sticks[y] == null) continue;
                 gridRowSticks[snapIndex.x + x].sticks[snapIndex.y + y].OnOccupied();
             }
         }
@@ -107,7 +108,7 @@ public class GridController : MonoBehaviour
         selectedPiece.DestroyPiece();
         gamePlaySO.OnPiecePlaced?.Invoke();
     }
-    
+
 
     private void OnStickSelected()
     {
@@ -127,7 +128,7 @@ public class GridController : MonoBehaviour
                     (!selectedPiece.isReferenceVertical && i % 2 == 1)) continue;
 
                 Stick stick = gridRowSticks[i].sticks[j];
-                var distance = Vector3.Distance(stick.transform.position, referencePoint.position  + pieceOffset);
+                var distance = Vector3.Distance(stick.transform.position, referencePoint.position + pieceOffset);
 
                 if (distance > snapDistance) continue;
                 RemoveAllHighlights();
@@ -157,17 +158,18 @@ public class GridController : MonoBehaviour
     public bool CanPlace(Piece piece)
     {
         float closestDistance = Mathf.Infinity;
-        
+
         for (int i = 0; i < gridRowSticks.Length; i++)
         {
             for (int j = 0; j < gridRowSticks[i].sticks.Count; j++)
             {
-                if (CanSnap(new Vector2Int(i, j),piece))
+                if (CanSnap(new Vector2Int(i, j), piece))
                 {
                     return true;
                 }
             }
         }
+
         return false;
     }
 
@@ -177,7 +179,7 @@ public class GridController : MonoBehaviour
         {
             for (int y = 0; y < selectedPiece.gridRows[x].sticks.Count; y++)
             {
-                if(selectedPiece.gridRows[x].sticks[y] == null) continue;
+                if (selectedPiece.gridRows[x].sticks[y] == null) continue;
                 gridRowSticks[i + x].sticks[j + y].Highlight();
             }
         }
@@ -191,7 +193,8 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < piece.gridRows[i].sticks.Count; j++)
             {
-                if (snapIndex.x + i >= gridRowSticks.Length || snapIndex.y + j >= gridRowSticks[snapIndex.x + i].sticks.Count)
+                if (snapIndex.x + i >= gridRowSticks.Length ||
+                    snapIndex.y + j >= gridRowSticks[snapIndex.x + i].sticks.Count)
                     return false;
                 if (gridRowSticks[snapIndex.x + i].sticks[snapIndex.y + j].isOccupied &&
                     piece.gridRows[i].sticks[j] != null)

@@ -104,3 +104,4 @@ MonoBehaviour:
   emptyColor: {r: 0, g: 0.16862746, b: 0.7490196, a: 1}
   highlightColor: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
   spriteRenderer: {fileID: 1350391779217558355}
+  gamePlaySO: {fileID: 11400000, guid: 65d71c145aeb16648b3b67f23b161dd6, type: 2}

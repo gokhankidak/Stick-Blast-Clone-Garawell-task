@@ -13,11 +13,11 @@ public class Piece : MonoBehaviour
     private Vector3 mouseOffset;
     private Vector3 startPosition;
     
-    private PieceController pieceController;
+    private PieceManager pieceManager;
 
     private void Start()
     {
-        pieceController = ServiceLocator.Get<PieceController>();
+        pieceManager = ServiceLocator.Get<PieceManager>();
         
         startPosition = transform.position;
         originalScale = transform.localScale;
@@ -34,7 +34,7 @@ public class Piece : MonoBehaviour
     private void OnMouseDown()
     {
         mouseOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pieceController.OnPieceSelected(this);
+        pieceManager.OnPieceSelected(this);
         
     }
     
@@ -46,12 +46,12 @@ public class Piece : MonoBehaviour
     private void OnMouseUp()
     {
         transform.position = startPosition;
-        pieceController.OnPieceDropped();
+        pieceManager.OnPieceDropped();
     }
 
     public void DestroyPiece()
     {
-        pieceController.OnPieceDestroyed(this);
+        pieceManager.OnPieceDestroyed(this);
         Destroy(gameObject);
     }
 
